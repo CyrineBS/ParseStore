@@ -8,6 +8,7 @@
 #import "PFProducts.h"
 #import "PFCheckoutViewController.h"
 #import "PFShippingViewController.h"
+#import <ParseUI/ParseUI.h>
 
 #define TEXT_FIELD_TAG_OFFSET 1000
 #define NUM_TEXT_FIELD 5

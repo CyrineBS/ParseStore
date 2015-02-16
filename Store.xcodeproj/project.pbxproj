@@ -67,6 +67,8 @@
 		4999CBFE16DD628D00C6C8FC /* PFShippingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4999CBFD16DD628D00C6C8FC /* PFShippingViewController.m */; };
 		4999CC0116DD635D00C6C8FC /* PFProducts.m in Sources */ = {isa = PBXBuildFile; fileRef = 4999CC0016DD635D00C6C8FC /* PFProducts.m */; };
 		49C753BE16E146A800877F16 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49C753BD16E146A800877F16 /* Parse.framework */; };
+		B932E4AF1A92522100E2E503 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B932E4AD1A92522100E2E503 /* Bolts.framework */; };
+		B932E4B01A92522100E2E503 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B932E4AE1A92522100E2E503 /* ParseUI.framework */; };
 		D969D68B16E171BE00135DC1 /* Arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = D969D65816E171BE00135DC1 /* Arrow.png */; };
 		D969D68C16E171BE00135DC1 /* Arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D969D65916E171BE00135DC1 /* Arrow@2x.png */; };
 		D969D68D16E171BE00135DC1 /* ButtonBack.png in Resources */ = {isa = PBXBuildFile; fileRef = D969D65A16E171BE00135DC1 /* ButtonBack.png */; };
@@ -205,6 +207,8 @@
 		49B70A6D16E181D600AA0E0D /* Distribution.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Distribution.xcconfig; path = Store/Resources/Distribution.xcconfig; sourceTree = "<group>"; };
 		49B70A6E16E181E100AA0E0D /* Development.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Development.xcconfig; path = Store/Resources/Development.xcconfig; sourceTree = "<group>"; };
 		49C753BD16E146A800877F16 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = Store/Vendor/Parse.framework; sourceTree = "<group>"; };
+		B932E4AD1A92522100E2E503 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = Store/Vendor/Bolts.framework; sourceTree = "<group>"; };
+		B932E4AE1A92522100E2E503 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseUI.framework; path = Store/Vendor/ParseUI.framework; sourceTree = "<group>"; };
 		D969D65816E171BE00135DC1 /* Arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Arrow.png; sourceTree = "<group>"; };
 		D969D65916E171BE00135DC1 /* Arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Arrow@2x.png"; sourceTree = "<group>"; };
 		D969D65A16E171BE00135DC1 /* ButtonBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ButtonBack.png; sourceTree = "<group>"; };
@@ -267,11 +271,13 @@
 				49524E0F16E03252000E08B7 /* libsqlite3.dylib in Frameworks */,
 				49524E0D16E0324A000E08B7 /* CoreLocation.framework in Frameworks */,
 				4918FAAF16DC4A5400C663F8 /* CoreGraphics.framework in Frameworks */,
+				B932E4B01A92522100E2E503 /* ParseUI.framework in Frameworks */,
 				49524E0B16E03233000E08B7 /* CFNetwork.framework in Frameworks */,
 				49524E0916E0322B000E08B7 /* AdSupport.framework in Frameworks */,
 				49524E0716E03224000E08B7 /* Accounts.framework in Frameworks */,
 				49524E0516E0321C000E08B7 /* AudioToolbox.framework in Frameworks */,
 				4918FAAB16DC4A5400C663F8 /* UIKit.framework in Frameworks */,
+				B932E4AF1A92522100E2E503 /* Bolts.framework in Frameworks */,
 				4918FAAD16DC4A5400C663F8 /* Foundation.framework in Frameworks */,
 				49C753BE16E146A800877F16 /* Parse.framework in Frameworks */,
 			);
@@ -303,6 +309,8 @@
 			isa = PBXGroup;
 			children = (
 				49C753BD16E146A800877F16 /* Parse.framework */,
+				B932E4AE1A92522100E2E503 /* ParseUI.framework */,
+				B932E4AD1A92522100E2E503 /* Bolts.framework */,
 				49524E1A16E032A1000E08B7 /* SystemConfiguration.framework */,
 				49524E1816E0328D000E08B7 /* StoreKit.framework */,
 				49524E1616E03278000E08B7 /* Social.framework */,
@@ -769,8 +777,9 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)\"",
+					"$(SRCROOT)",
 					"\"$(SRCROOT)/Store/Vendor\"",
+					"$(PROJECT_DIR)/Store/Vendor",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Store/Store-Prefix.pch";
@@ -790,8 +799,9 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)\"",
+					"$(SRCROOT)",
 					"\"$(SRCROOT)/Store/Vendor\"",
+					"$(PROJECT_DIR)/Store/Vendor",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Store/Store-Prefix.pch";
