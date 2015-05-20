@@ -5,6 +5,8 @@
 //  Created by Andrew Wang on 3/5/13.
 //
 
+#import <ParseUI/ParseUI.h>
+
 @interface PFProductTableViewCell : PFTableViewCell
 
 @property (nonatomic, strong) UIButton *sizeButton;

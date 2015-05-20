@@ -25,7 +25,7 @@
 
 - (id)initWithStyle:(UITableViewStyle)style {
     if (self = [super initWithStyle:UITableViewStylePlain]) {
-        self.className = @"Item";
+        self.parseClassName = @"Item";
         [self.tableView registerClass:[PFProductTableViewCell class] forCellReuseIdentifier:@"ParseProduct"];
         self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     }
