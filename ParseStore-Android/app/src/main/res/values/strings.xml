@@ -5,6 +5,10 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_splash">Splash</string>
 
+    <string name="item_name">Item Name</string>
+    <string name="order">Order</string>
+    <string name="price_label">Price Label</string>
+
     <string-array name="sizes">
         <item>Small</item>
         <item>Medium</item>

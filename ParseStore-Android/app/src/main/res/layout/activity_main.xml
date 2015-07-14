@@ -11,13 +11,16 @@
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentBottom="true" />
+        android:layout_above="@+id/footer" />
 
     <ImageView
+        android:paddingTop="5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/footer"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
+        android:clickable="true"
         android:src="@drawable/powered"/>
+
 </RelativeLayout>

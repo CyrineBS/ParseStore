@@ -1,6 +1,7 @@
 package com.parse.parsestore;
 
 import com.parse.ParseClassName;
+import com.parse.ParseFile;
 import com.parse.ParseObject;
 
 /**
@@ -13,33 +14,18 @@ public class Item extends ParseObject {
     private Number price;
     private boolean hasSize;
 
-    public Item(){
-
-    }
 
     public String getName() {
         return getString("name");
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public String getDescription(){
         return getString("description");
     }
 
-    public void setDescription(String description){
-        put("description",description);
-    }
-
-
     public Number getPrice() {
         return getNumber("price");
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
     }
 
     public boolean hasSize() {
@@ -48,5 +34,9 @@ public class Item extends ParseObject {
 
     public Number getQuantity(){
         return getNumber("quantityAvailable");
+    }
+
+    public ParseFile getItemImage(){
+        return getParseFile("image");
     }
 }

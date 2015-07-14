@@ -5,9 +5,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import com.parse.GetDataCallback;
+import com.parse.ParseException;
+import com.parse.ParseFile;
+import com.parse.ParseImageView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,8 +42,21 @@ public class ProductsView extends RecyclerView.Adapter<ProductsView.ViewHolder>{
         if(!products.hasSize())
             viewHolder.sizes.setVisibility(View.INVISIBLE);
 
-        viewHolder.productName.setText(products.getName());
-        viewHolder.priceLabel.setText(products.getPrice().toString());
+        viewHolder.productName.setText(products.getDescription());
+        viewHolder.priceLabel.setText("$" + products.getPrice().toString());
+        ParseFile itemImage = products.getItemImage();
+        if(itemImage!= null){
+            viewHolder.productImage.setParseFile(itemImage);
+            viewHolder.productImage.loadInBackground(new GetDataCallback() {
+                @Override
+                public void done(byte[] data, ParseException e) {
+
+                }
+            });
+        }
+
+
+
 
     }
 
@@ -52,7 +69,7 @@ public class ProductsView extends RecyclerView.Adapter<ProductsView.ViewHolder>{
     class ViewHolder extends RecyclerView.ViewHolder{
 
         public TextView priceLabel;
-        public ImageView productImage;
+        public ParseImageView productImage;
         public TextView productName;
         public Spinner sizes;
         public Button orderButton;
@@ -60,7 +77,7 @@ public class ProductsView extends RecyclerView.Adapter<ProductsView.ViewHolder>{
         public ViewHolder(View itemView) {
             super(itemView);
             priceLabel = (TextView) itemView.findViewById(R.id.priceLabel);
-            productImage = (ImageView) itemView.findViewById(R.id.productImage);
+            productImage = (ParseImageView) itemView.findViewById(R.id.productImage);
             productName = (TextView) itemView.findViewById(R.id.productName);
             sizes = (Spinner) itemView.findViewById(R.id.sizeList);
             orderButton = (Button) itemView.findViewById(R.id.orderButton);
