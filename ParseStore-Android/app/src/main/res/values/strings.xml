@@ -18,4 +18,11 @@
         <item>Extra Large</item>
     </string-array>
     <string name="title_activity_shipping_view">ShippingView</string>
+    <string name="us_address_only">US mailing address only</string>
+    <string name="postalCode">Postal Code</string>
+    <string name="city_state">City, State</string>
+    <string name="address">Address</string>
+    <string name="email">Email</string>
+    <string name="name">Name</string>
+    <string name="checkout">Checkout</string>
 </resources>
