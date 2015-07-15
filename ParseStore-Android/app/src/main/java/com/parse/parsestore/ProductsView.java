@@ -1,5 +1,8 @@
 package com.parse.parsestore;
 
+import android.content.Context;
+import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,13 +25,21 @@ import java.util.List;
 public class ProductsView extends RecyclerView.Adapter<ProductsView.ViewHolder>{
 
     List<Item> mProducts;
+    Context mContext;
+
+    private OrderButtonListener orderButtonListener;
 
     public ProductsView(ArrayList<Item> items){
         mProducts = items;
     }
 
+    public void setOrderButtonListener(OrderButtonListener listener){
+        this.orderButtonListener = listener;
+    }
+
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
+        mContext = viewGroup.getContext();
         View v = LayoutInflater.from(viewGroup.getContext())
                 .inflate(R.layout.card_layout, viewGroup, false);
         ViewHolder viewHolder = new ViewHolder(v);
@@ -36,15 +47,15 @@ public class ProductsView extends RecyclerView.Adapter<ProductsView.ViewHolder>{
     }
 
     @Override
-    public void onBindViewHolder(ProductsView.ViewHolder viewHolder, int i) {
-        Item products = mProducts.get(i);
+    public void onBindViewHolder(final ProductsView.ViewHolder viewHolder, int i) {
+        final Item product = mProducts.get(i);
 
-        if(!products.hasSize())
+        if(!product.hasSize())
             viewHolder.sizes.setVisibility(View.INVISIBLE);
 
-        viewHolder.productName.setText(products.getDescription());
-        viewHolder.priceLabel.setText("$" + products.getPrice().toString());
-        ParseFile itemImage = products.getItemImage();
+        viewHolder.productName.setText(product.getDescription());
+        viewHolder.priceLabel.setText("$" + product.getPrice().toString());
+        ParseFile itemImage = product.getItemImage();
         if(itemImage!= null){
             viewHolder.productImage.setParseFile(itemImage);
             viewHolder.productImage.loadInBackground(new GetDataCallback() {
@@ -54,6 +65,23 @@ public class ProductsView extends RecyclerView.Adapter<ProductsView.ViewHolder>{
                 }
             });
         }
+        viewHolder.orderButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(product.hasSize() && viewHolder.sizes.getSelectedItemPosition() < 1) {
+                    new AlertDialog.Builder(mContext)
+                            .setTitle("Missing Size")
+                            .setMessage("Please select a size.")
+                            .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                }
+                            })
+                            .show();
+                }
+                else
+                    orderButtonListener.orderButtonClicked(product);
+            }
+        });
 
 
 
@@ -66,13 +94,17 @@ public class ProductsView extends RecyclerView.Adapter<ProductsView.ViewHolder>{
         return mProducts.size();
     }
 
+    public interface OrderButtonListener {
+        void orderButtonClicked(Item item);
+    }
+
     class ViewHolder extends RecyclerView.ViewHolder{
 
-        public TextView priceLabel;
-        public ParseImageView productImage;
-        public TextView productName;
-        public Spinner sizes;
-        public Button orderButton;
+        private TextView priceLabel;
+        private ParseImageView productImage;
+        private TextView productName;
+        private Spinner sizes;
+        private Button orderButton;
 
         public ViewHolder(View itemView) {
             super(itemView);

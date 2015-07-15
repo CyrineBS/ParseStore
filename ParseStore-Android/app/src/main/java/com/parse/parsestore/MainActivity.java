@@ -1,5 +1,8 @@
 package com.parse.parsestore;
 
+import android.content.Intent;
+import android.graphics.PorterDuff;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -7,6 +10,8 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
 
 import com.parse.FindCallback;
 import com.parse.ParseException;
@@ -19,6 +24,8 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static Item selectedItem;
+
     final String LOGTAG = "MainActivity";
     final ArrayList<Item> items = new ArrayList<>();
 
@@ -26,9 +33,11 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView.LayoutManager mLayoutManager;
     RecyclerView.Adapter mAdapter;
 
+    ImageView poweredImage;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         //setContentView(R.layout.activity_main);
         loadDataLocally();
 
@@ -61,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
     private void loadFromNetwork() {
         Log.i(LOGTAG, "Loading data from the Network!");
         ParseQuery<Item> query = ParseQuery.getQuery(Item.class);
+        query.orderByDescending("description");
         query.findInBackground(new FindCallback<Item>() {
             public void done(List<Item> objects, ParseException e) {
                 if (e == null) {
@@ -83,14 +93,31 @@ public class MainActivity extends AppCompatActivity {
 
     private void display() {
         setContentView(R.layout.activity_main);
+        poweredImage = (ImageView) findViewById(R.id.footer);
+        poweredImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                poweredImage.setColorFilter(R.color.primary_text, PorterDuff.Mode.MULTIPLY);
+
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.parse.com"));
+                startActivity(browserIntent);
+            }
+        });
+
         mRecyclerView = (RecyclerView)findViewById(R.id.recycler_view);
         mRecyclerView.setHasFixedSize(true);
 
+        ProductsView productsView = new ProductsView(items);
+        productsView.setOrderButtonListener(new ProductsView.OrderButtonListener() {
+            @Override
+            public void orderButtonClicked(Item item) {
+                selectedItem = item;
+                Intent intent = new Intent(MainActivity.this,ShippingView.class);
+                startActivity(intent);
+            }
+        });
 
-
-        mAdapter = new ProductsView(items);
-
-
+        mAdapter = productsView;
         mLayoutManager = new LinearLayoutManager(getApplicationContext());
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);

@@ -8,11 +8,14 @@
     <string name="item_name">Item Name</string>
     <string name="order">Order</string>
     <string name="price_label">Price Label</string>
+    <string name="size">Size</string>
 
     <string-array name="sizes">
+        <item>Select Size</item>
         <item>Small</item>
         <item>Medium</item>
         <item>Large</item>
         <item>Extra Large</item>
     </string-array>
+    <string name="title_activity_shipping_view">ShippingView</string>
 </resources>
