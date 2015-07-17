@@ -12,6 +12,6 @@ public class Application extends android.app.Application{
 
         Parse.enableLocalDatastore(getApplicationContext());
         ParseObject.registerSubclass(Item.class);
-        Parse.initialize(this, "Parse App Id", "Parse Client Key");
+        Parse.initialize(this, "Z3OTbpQCILL7UHIskRT6PqEygMRg1B4DQx8CxMKQ", "nMiCzwvQnPODP2RPQyj6TBbCjalv3ZeuX5bZD78X");
     }
 }

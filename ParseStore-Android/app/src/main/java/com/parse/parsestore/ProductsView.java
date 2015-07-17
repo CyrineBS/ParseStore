@@ -82,10 +82,6 @@ public class ProductsView extends RecyclerView.Adapter<ProductsView.ViewHolder>{
                     orderButtonListener.orderButtonClicked(product);
             }
         });
-
-
-
-
     }
 
 

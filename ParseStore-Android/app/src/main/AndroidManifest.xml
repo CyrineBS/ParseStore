@@ -28,6 +28,10 @@
             android:name=".ShippingView"
             android:label="@string/title_activity_shipping_view" >
         </activity>
+        <activity
+            android:name=".CheckoutView"
+            android:label="@string/title_activity_checkout" >
+        </activity>
     </application>
 
 </manifest>

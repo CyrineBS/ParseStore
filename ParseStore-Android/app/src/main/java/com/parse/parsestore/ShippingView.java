@@ -1,10 +1,18 @@
 package com.parse.parsestore;
 
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.graphics.PorterDuff;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.parse.GetDataCallback;
@@ -15,10 +23,10 @@ import com.parse.ParseImageView;
 
 public class ShippingView extends AppCompatActivity {
 
-    private TextView priceLabel;
-    private ParseImageView productImage;
-    private TextView productName;
-    private TextView size;
+    EditText name, email, address, cityState, postalCode;
+    ImageView poweredImage;
+    Button checkoutImage;
+
 
     private Item product = MainActivity.selectedItem;
     @Override
@@ -26,10 +34,16 @@ public class ShippingView extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shipping_view);
 
-        priceLabel = (TextView) findViewById(R.id.priceLabel);
-        productImage = (ParseImageView) findViewById(R.id.productImage);
-        productName = (TextView) findViewById(R.id.productName);
-        size = (TextView) findViewById(R.id.size);
+        TextView priceLabel = (TextView) findViewById(R.id.priceLabel);
+        ParseImageView productImage = (ParseImageView) findViewById(R.id.productImage);
+        TextView productName = (TextView) findViewById(R.id.productName);
+        TextView size = (TextView) findViewById(R.id.size);
+
+        name = (EditText) findViewById(R.id.personName);
+        email = (EditText) findViewById(R.id.personEmail);
+        address = (EditText) findViewById(R.id.personAddress);
+        cityState = (EditText) findViewById(R.id.cityState);
+        postalCode = (EditText) findViewById(R.id.zipcode);
 
         if(!product.hasSize())
             size.setVisibility(View.INVISIBLE);
@@ -46,6 +60,46 @@ public class ShippingView extends AppCompatActivity {
                 }
             });
         }
+
+        poweredImage = (ImageView) findViewById(R.id.footer);
+        poweredImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                poweredImage.setColorFilter(R.color.primary, PorterDuff.Mode.MULTIPLY);
+
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.parse.com"));
+                startActivity(browserIntent);
+            }
+        });
+
+        checkoutImage = (Button) findViewById(R.id.orderButton);
+        checkoutImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(name.getText().toString().length() > 0 &&
+                        email.getText().toString().length() > 0 &&
+                        address.getText().toString().length() > 0 &&
+                        cityState.getText().toString().length()  > 0 &&
+                        postalCode.getText().toString().length() >  0){
+
+                    Intent intent = new Intent(ShippingView.this,CheckoutView.class);
+                    intent.putExtra("ShippingInfo", new ShippingInfo(name.getText().toString(),
+                            email.getText().toString(), address.getText().toString(),
+                            cityState.getText().toString(),postalCode.getText().toString()));
+                    startActivity(intent);
+                }
+                else{
+                    new AlertDialog.Builder(getApplication())
+                            .setTitle("Missing Info")
+                            .setMessage("Please fill out all the fields.")
+                            .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                }
+                            })
+                            .show();
+                }
+            }
+        });
     }
 
     @Override
