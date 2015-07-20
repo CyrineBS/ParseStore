@@ -1,14 +1,15 @@
-package com.parse.parsestore;
+package com.parse.parsestore.Activities;
 
-import android.content.DialogInterface;
+/**
+ * Created by Madhav Chhura on 7/11/15.
+ */
+
 import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
+import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,9 +20,15 @@ import com.parse.GetDataCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseImageView;
+import com.parse.parsestore.Fragments.ErrorDialogFragment;
+import com.parse.parsestore.Item;
+import com.parse.parsestore.R;
+import com.parse.parsestore.ShippingInfo;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-public class ShippingView extends AppCompatActivity {
+public class ShippingActivity extends AppCompatActivity {
 
     EditText name, email, address, cityState, postalCode;
     ImageView poweredImage;
@@ -76,51 +83,33 @@ public class ShippingView extends AppCompatActivity {
         checkoutImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(name.getText().toString().length() > 0 &&
-                        email.getText().toString().length() > 0 &&
-                        address.getText().toString().length() > 0 &&
-                        cityState.getText().toString().length()  > 0 &&
-                        postalCode.getText().toString().length() >  0){
+                if(isEmailValid(email.getText().toString())){
 
-                    Intent intent = new Intent(ShippingView.this,CheckoutView.class);
+                    Intent intent = new Intent(ShippingActivity.this,CheckoutActivity.class);
                     intent.putExtra("ShippingInfo", new ShippingInfo(name.getText().toString(),
                             email.getText().toString(), address.getText().toString(),
                             cityState.getText().toString(),postalCode.getText().toString()));
                     startActivity(intent);
                 }
-                else{
-                    new AlertDialog.Builder(getApplication())
-                            .setTitle("Missing Info")
-                            .setMessage("Please fill out all the fields.")
-                            .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int which) {
-                                }
-                            })
-                            .show();
+                else {
+                    DialogFragment fragment = ErrorDialogFragment.newInstance(R.string.invalidEmail, "Please enter a valid email.");
+                    fragment.show(getSupportFragmentManager(), "Invalid Email");
                 }
             }
         });
+
     }
+    public static boolean isEmailValid(String email) {
+        boolean isValid = false;
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_shipping_view, menu);
-        return true;
-    }
+        String expression = "^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$";
+        CharSequence inputStr = email;
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        Pattern pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE);
+        Matcher matcher = pattern.matcher(inputStr);
+        if (matcher.matches()) {
+            isValid = true;
         }
-
-        return super.onOptionsItemSelected(item);
+        return isValid;
     }
 }

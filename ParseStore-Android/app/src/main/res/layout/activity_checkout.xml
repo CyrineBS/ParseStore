@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
-    tools:context="com.parse.parsestore.CheckoutView">
+    tools:context="com.parse.parsestore.Activities.CheckoutActivity">
 
     <include
         android:id="@+id/toolbar"
@@ -65,8 +65,9 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
+            android:paddingLeft="5dp"
+            android:layout_marginLeft="7dp"
+            android:layout_marginRight="7dp"
             android:background="@drawable/rounded_edittext"
             android:layout_centerVertical="true"
             android:layout_alignLeft="@+id/cardNumber"
@@ -80,39 +81,45 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:drawableLeft="@drawable/creditcard_placeholder"
+                android:drawablePadding="5dip"
                 android:clickable="true"
-                android:paddingRight="20dp" />
+                android:textAlignment="gravity"
+                android:textSize="18sp"
+                android:elegantTextHeight="true"
+                android:gravity="center" />
 
             <EditText
-                android:layout_width="76dp"
+                android:layout_width="65dp"
                 android:layout_height="50dp"
                 android:inputType="date"
                 android:maxLength="5"
                 android:ems="6"
                 android:id="@+id/expDate"
                 android:hint="@string/date_hint"
-                />
+                android:background="#00000000"
+                android:layout_marginLeft="10dp"/>
 
             <EditText
-                android:layout_width="44dp"
+                android:layout_width="40dp"
                 android:layout_height="50dp"
                 android:inputType="numberDecimal"
                 android:maxLength="4"
                 android:ems="6"
                 android:id="@+id/cvc"
                 android:hint="@string/cvc"
-                android:layout_marginLeft="20dp" />
+                android:layout_marginLeft="5dp"
+                android:background="#00000000"/>
 
             <EditText
-                android:layout_width="85dp"
+                android:layout_width="60dp"
                 android:layout_height="50dp"
-                android:inputType="textPostalAddress"
-                android:ems="6"
+                android:inputType="numberDecimal"
+                android:ems="5"
                 android:maxLength="5"
                 android:id="@+id/zipcode"
                 android:hint="@string/zip_code"
-                android:layout_marginLeft="20dp" />
-
+                android:layout_marginLeft="5dp"
+                android:background="#00000000"/>
 
         </LinearLayout>
 

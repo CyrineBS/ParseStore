@@ -1,4 +1,8 @@
-package com.parse.parsestore;
+package com.parse.parsestore.Activities;
+
+/**
+ * Created by Madhav Chhura on 7/11/15.
+ */
 
 import android.content.Intent;
 import android.graphics.PorterDuff;
@@ -8,8 +12,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -17,10 +19,11 @@ import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
 import com.parse.SaveCallback;
+import com.parse.parsestore.Item;
+import com.parse.parsestore.R;
 
 import java.util.ArrayList;
 import java.util.List;
-
 
 public class MainActivity extends AppCompatActivity {
 
@@ -45,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
         Log.i(LOGTAG, "Loading data locally!");
         ParseQuery<Item> localQuery = ParseQuery.getQuery(Item.class);
         localQuery.fromLocalDatastore();
+        localQuery.orderByAscending("description");
         localQuery.findInBackground(new FindCallback<Item>() {
             @Override
             public void done(List<Item> objects, ParseException e) {
@@ -68,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
     private void loadFromNetwork() {
         Log.i(LOGTAG, "Loading data from the Network!");
         ParseQuery<Item> query = ParseQuery.getQuery(Item.class);
-        query.orderByDescending("description");
+        query.orderByAscending("description");
         query.findInBackground(new FindCallback<Item>() {
             public void done(List<Item> objects, ParseException e) {
                 if (e == null) {
@@ -105,42 +109,19 @@ public class MainActivity extends AppCompatActivity {
         mRecyclerView = (RecyclerView)findViewById(R.id.recycler_view);
         mRecyclerView.setHasFixedSize(true);
 
-        ProductsView productsView = new ProductsView(items);
-        productsView.setOrderButtonListener(new ProductsView.OrderButtonListener() {
+        ProductsActivity productsActivity = new ProductsActivity(items);
+        productsActivity.setOrderButtonListener(new ProductsActivity.OrderButtonListener() {
             @Override
             public void orderButtonClicked(Item item) {
                 selectedItem = item;
-                Intent intent = new Intent(MainActivity.this,ShippingView.class);
+                Intent intent = new Intent(MainActivity.this,ShippingActivity.class);
                 startActivity(intent);
             }
         });
 
-        mAdapter = productsView;
+        mAdapter = productsActivity;
         mLayoutManager = new LinearLayoutManager(getApplicationContext());
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
-    }
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 }

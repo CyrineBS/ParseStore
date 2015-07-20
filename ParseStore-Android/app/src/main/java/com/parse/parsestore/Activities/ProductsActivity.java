@@ -1,4 +1,8 @@
-package com.parse.parsestore;
+package com.parse.parsestore.Activities;
+
+/**
+ * Created by Madhav Chhura on 7/11/15.
+ */
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -15,21 +19,20 @@ import com.parse.GetDataCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseImageView;
+import com.parse.parsestore.Item;
+import com.parse.parsestore.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by madhav on 7/11/15.
- */
-public class ProductsView extends RecyclerView.Adapter<ProductsView.ViewHolder>{
+public class ProductsActivity extends RecyclerView.Adapter<ProductsActivity.ViewHolder>{
 
     List<Item> mProducts;
     Context mContext;
 
     private OrderButtonListener orderButtonListener;
 
-    public ProductsView(ArrayList<Item> items){
+    public ProductsActivity(ArrayList<Item> items){
         mProducts = items;
     }
 
@@ -47,7 +50,7 @@ public class ProductsView extends RecyclerView.Adapter<ProductsView.ViewHolder>{
     }
 
     @Override
-    public void onBindViewHolder(final ProductsView.ViewHolder viewHolder, int i) {
+    public void onBindViewHolder(final ProductsActivity.ViewHolder viewHolder, int i) {
         final Item product = mProducts.get(i);
 
         if(!product.hasSize())
@@ -78,8 +81,10 @@ public class ProductsView extends RecyclerView.Adapter<ProductsView.ViewHolder>{
                             })
                             .show();
                 }
-                else
+                else {
+                    product.setSize(viewHolder.sizes.getSelectedItem().toString());
                     orderButtonListener.orderButtonClicked(product);
+                }
             }
         });
     }

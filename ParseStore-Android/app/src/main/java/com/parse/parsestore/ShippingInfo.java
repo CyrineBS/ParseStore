@@ -4,7 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 /**
- * Created by madhav on 7/15/15.
+ * Created by Madhav Chhura on 7/15/15.
  */
 public class ShippingInfo implements Parcelable {
 
