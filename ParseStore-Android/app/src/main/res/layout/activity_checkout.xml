@@ -1,0 +1,128 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context="com.parse.parsestore.Activities.CheckoutActivity">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar" />
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/credit_card"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:id="@+id/creditCardImage" />
+
+        <TextView
+            android:id="@+id/edit_text1"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="107dp"
+            android:text="@string/card_info_prompt"
+            android:textSize="20sp"
+            android:layout_alignTop="@+id/creditCardImage"
+            android:layout_centerHorizontal="true" />
+
+        <ImageView
+            android:paddingBottom="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/footer"
+            android:clickable="true"
+            android:src="@drawable/powered"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true" />
+
+        <EditText
+            android:paddingLeft="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:inputType="numberDecimal"
+            android:id="@+id/cardNumber"
+            android:drawablePadding="5dip"
+            android:background="@drawable/rounded_edittext"
+            android:hint="@string/credit_card"
+            android:drawableLeft="@drawable/creditcard_placeholder"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="7dp"
+            android:layout_marginRight="7dp"
+            android:maxLength="16"/>
+
+        <LinearLayout
+            android:id="@+id/creditCardInfoLayout"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:paddingLeft="5dp"
+            android:layout_marginLeft="7dp"
+            android:layout_marginRight="7dp"
+            android:background="@drawable/rounded_edittext"
+            android:layout_centerVertical="true"
+            android:layout_alignLeft="@+id/cardNumber"
+            android:layout_alignStart="@+id/cardNumber"
+            android:layout_alignRight="@+id/cardNumber"
+            android:layout_alignEnd="@+id/cardNumber"
+            android:weightSum="1">
+
+            <TextView
+                android:id="@+id/last4"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:drawableLeft="@drawable/creditcard_placeholder"
+                android:drawablePadding="5dip"
+                android:clickable="true"
+                android:textAlignment="gravity"
+                android:textSize="18sp"
+                android:elegantTextHeight="true"
+                android:gravity="center" />
+
+            <EditText
+                android:layout_width="65dp"
+                android:layout_height="50dp"
+                android:inputType="date"
+                android:maxLength="5"
+                android:ems="6"
+                android:id="@+id/expDate"
+                android:hint="@string/date_hint"
+                android:background="#00000000"
+                android:layout_marginLeft="10dp"/>
+
+            <EditText
+                android:layout_width="40dp"
+                android:layout_height="50dp"
+                android:inputType="numberDecimal"
+                android:maxLength="4"
+                android:ems="6"
+                android:id="@+id/cvc"
+                android:hint="@string/cvc"
+                android:layout_marginLeft="5dp"
+                android:background="#00000000"/>
+
+            <EditText
+                android:layout_width="60dp"
+                android:layout_height="50dp"
+                android:inputType="numberDecimal"
+                android:ems="5"
+                android:maxLength="5"
+                android:id="@+id/zipcode"
+                android:hint="@string/zip_code"
+                android:layout_marginLeft="5dp"
+                android:background="#00000000"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</FrameLayout>
