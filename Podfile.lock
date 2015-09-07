@@ -1,0 +1,26 @@
+PODS:
+  - Bolts/Tasks (1.2.1)
+  - MBProgressHUD (0.9.1)
+  - Parse (1.8.2):
+    - Bolts/Tasks (>= 1.2.1)
+  - ParseUI (1.1.5):
+    - Bolts/Tasks (~> 1.2)
+    - Parse (~> 1.8)
+  - Stripe (5.1.2):
+    - Stripe/Core (= 5.1.2)
+  - Stripe/Core (5.1.2)
+
+DEPENDENCIES:
+  - MBProgressHUD
+  - Parse
+  - ParseUI
+  - Stripe
+
+SPEC CHECKSUMS:
+  Bolts: 7686a5cb204d1ac54cee26f12d9b7622db3f80d1
+  MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
+  Parse: 188601c6cd91fae55906badd283b513104a3a8c9
+  ParseUI: 2c53621ed028ee793f5ab92a551b099689265525
+  Stripe: 141b28d157f12db2e1624315cf19f1b6bd5af84d
+
+COCOAPODS: 0.38.2
