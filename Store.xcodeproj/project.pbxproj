@@ -33,6 +33,7 @@
 		4999CBFA16DD599900C6C8FC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4999CBF116DD599900C6C8FC /* InfoPlist.strings */; };
 		4999CBFE16DD628D00C6C8FC /* PFShippingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4999CBFD16DD628D00C6C8FC /* PFShippingViewController.m */; };
 		4999CC0116DD635D00C6C8FC /* PFProducts.m in Sources */ = {isa = PBXBuildFile; fileRef = 4999CC0016DD635D00C6C8FC /* PFProducts.m */; };
+		D3E8C3C51B9DCC9C002D419C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3E8C3C41B9DCC9C002D419C /* Images.xcassets */; };
 		D969D68B16E171BE00135DC1 /* Arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = D969D65816E171BE00135DC1 /* Arrow.png */; };
 		D969D68C16E171BE00135DC1 /* Arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D969D65916E171BE00135DC1 /* Arrow@2x.png */; };
 		D969D68D16E171BE00135DC1 /* ButtonBack.png in Resources */ = {isa = PBXBuildFile; fileRef = D969D65A16E171BE00135DC1 /* ButtonBack.png */; };
@@ -123,6 +124,7 @@
 		49B70A6E16E181E100AA0E0D /* Development.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Development.xcconfig; path = Store/Resources/Development.xcconfig; sourceTree = "<group>"; };
 		5F884AFE0317A6938C378593 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		76D0D2A48CF6EE701B1159EB /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		D3E8C3C41B9DCC9C002D419C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Store/Images.xcassets; sourceTree = "<group>"; };
 		D969D65816E171BE00135DC1 /* Arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Arrow.png; sourceTree = "<group>"; };
 		D969D65916E171BE00135DC1 /* Arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Arrow@2x.png"; sourceTree = "<group>"; };
 		D969D65A16E171BE00135DC1 /* ButtonBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ButtonBack.png; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 			children = (
 				49B70A6D16E181D600AA0E0D /* Distribution.xcconfig */,
 				49B70A6E16E181E100AA0E0D /* Development.xcconfig */,
+				D3E8C3C41B9DCC9C002D419C /* Images.xcassets */,
 				4918FAB016DC4A5400C663F8 /* Store */,
 				4918FAA916DC4A5400C663F8 /* Frameworks */,
 				4918FAA816DC4A5400C663F8 /* Products */,
@@ -446,6 +449,7 @@
 				D969D6A016E171BE00135DC1 /* DropdownButtonPressed.png in Resources */,
 				D969D6A116E171BE00135DC1 /* DropdownButtonPressed@2x.png in Resources */,
 				D969D6A416E171BE00135DC1 /* Icon-72.png in Resources */,
+				D3E8C3C51B9DCC9C002D419C /* Images.xcassets in Resources */,
 				D969D6A516E171BE00135DC1 /* Icon-72@2x.png in Resources */,
 				D969D6A616E171BE00135DC1 /* Icon-Small-50.png in Resources */,
 				D969D6A716E171BE00135DC1 /* Icon-Small-50@2x.png in Resources */,
