@@ -33,6 +33,7 @@
 		4999CBFA16DD599900C6C8FC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4999CBF116DD599900C6C8FC /* InfoPlist.strings */; };
 		4999CBFE16DD628D00C6C8FC /* PFShippingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4999CBFD16DD628D00C6C8FC /* PFShippingViewController.m */; };
 		4999CC0116DD635D00C6C8FC /* PFProducts.m in Sources */ = {isa = PBXBuildFile; fileRef = 4999CC0016DD635D00C6C8FC /* PFProducts.m */; };
+		D3C14B981B9E0604006A2ACD /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D3C14B971B9E0604006A2ACD /* Default-568h@2x.png */; };
 		D3E8C3C51B9DCC9C002D419C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3E8C3C41B9DCC9C002D419C /* Images.xcassets */; };
 		DACCB296DF7589C40520351C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FF763224EBD9E65E9994A330 /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -79,6 +80,7 @@
 		49B70A6E16E181E100AA0E0D /* Development.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Development.xcconfig; path = Store/Resources/Development.xcconfig; sourceTree = "<group>"; };
 		5F884AFE0317A6938C378593 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		76D0D2A48CF6EE701B1159EB /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		D3C14B971B9E0604006A2ACD /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		D3E8C3C41B9DCC9C002D419C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		FF763224EBD9E65E9994A330 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -114,6 +116,7 @@
 		4918FA9E16DC4A5400C663F8 = {
 			isa = PBXGroup;
 			children = (
+				D3C14B971B9E0604006A2ACD /* Default-568h@2x.png */,
 				49B70A6D16E181D600AA0E0D /* Distribution.xcconfig */,
 				49B70A6E16E181E100AA0E0D /* Development.xcconfig */,
 				4918FAB016DC4A5400C663F8 /* Store */,
@@ -282,6 +285,7 @@
 			files = (
 				4999CBFA16DD599900C6C8FC /* InfoPlist.strings in Resources */,
 				D3E8C3C51B9DCC9C002D419C /* Images.xcassets in Resources */,
+				D3C14B981B9E0604006A2ACD /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
