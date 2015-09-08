@@ -70,6 +70,8 @@
         cell = [[PFProductTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     
+    self.tableView.separatorColor = [UIColor clearColor];
+    
     PFObject *product = self.objects[indexPath.row];
     [cell configureProduct:product];
 

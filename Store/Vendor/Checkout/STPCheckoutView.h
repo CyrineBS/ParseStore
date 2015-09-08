@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "Stripe.h"
-#import "PKView.h"
 
 #define STPCardErrorUserMessage NSLocalizedString(@"Your card is invalid", @"Error when the card is not valid")
 
@@ -18,14 +17,14 @@ typedef void (^STPCheckoutTokenBlock)(STPToken* token, NSError* error);
 
 @protocol STPCheckoutDelegate <NSObject>
 @optional
-- (void) checkoutView:(STPCheckoutView*)view withCard:(PKCard *)card isValid:(BOOL)valid;
+- (void) checkoutView:(STPCheckoutView*)view withCard:(STPCard *)card isValid:(BOOL)valid;
 @end
 
-@interface STPCheckoutView : UIView <PKViewDelegate>
+@interface STPCheckoutView : UIView <STPPaymentCardTextFieldDelegate>
 
 - (id)initWithFrame: (CGRect)frame andKey: (NSString*)stripeKey;
 
-@property IBOutlet PKView* paymentView;
+@property IBOutlet STPPaymentCardTextField* paymentView;
 @property (copy) NSString* key;
 @property id <STPCheckoutDelegate> delegate;
 @property (readonly) BOOL pending;

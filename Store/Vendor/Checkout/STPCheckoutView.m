@@ -26,24 +26,14 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        self.paymentView = [[PKView alloc] initWithFrame:CGRectMake(0,0,290,55)];
+        self.paymentView = [[STPPaymentCardTextField alloc] initWithFrame:CGRectMake(0,0,290,55)];
         self.paymentView.delegate = self;
         [self addSubview:self.paymentView];
     }
     return self;
 }
 
-- (BOOL)usAddress
-{
-    return self.paymentView.usAddress;
-}
-
-- (void)setUSAddress:(BOOL)enabled
-{
-    self.paymentView.usAddress = enabled;
-}
-
-- (void)paymentView:(PKView*)paymentView withCard:(PKCard *)card isValid:(BOOL)valid
+- (void)paymentView:(STPPaymentCardTextField*)paymentView withCard:(STPCard *)card isValid:(BOOL)valid
 {
     if ([self.delegate respondsToSelector:@selector(checkoutView:withCard:isValid:)]) {
         [self.delegate checkoutView:self withCard:card isValid:valid];
@@ -71,7 +61,7 @@
     
     [self endEditing:YES];
  
-    PKCard* card = self.paymentView.card;
+    STPCard* card = self.paymentView.card;
     STPCard* scard = [[STPCard alloc] init];
     
     scard.number = card.number;
@@ -80,9 +70,7 @@
     scard.cvc = card.cvc;
     
     [self pendingHandler:YES];
-    
-    [Stripe createTokenWithCard:scard
-                 publishableKey:self.key
+    [[STPAPIClient sharedClient] createTokenWithCard:scard
                      completion:^(STPToken *token, NSError *error) {
                      [self pendingHandler:NO];
                      block(token, error);
