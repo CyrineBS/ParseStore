@@ -1,3 +1,7 @@
+# [Archive] ParseStore
+
+**Note:** *This repository is not under active development.*
+
 # Quickstart 
 
 ## Seed sample products on Parse 
