@@ -1,6 +1,4 @@
-# [Archive] ParseStore
-
-**Note:** *This repository is not under active development.*
+# ParseStore
 
 # Quickstart 
 
